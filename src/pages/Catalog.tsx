@@ -15,7 +15,8 @@ import {
   PaginationItem, 
   PaginationLink, 
   PaginationNext, 
-  PaginationPrevious 
+  PaginationPrevious,
+  PaginationEllipsis
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
 
@@ -166,7 +167,7 @@ const Catalog = () => {
       if (startPage > 2) {
         items.push(
           <PaginationItem key="ellipsis-start">
-            <PaginationLink disabled>...</PaginationLink>
+            <PaginationEllipsis />
           </PaginationItem>
         );
       }
@@ -190,7 +191,7 @@ const Catalog = () => {
       if (endPage < totalPages - 1) {
         items.push(
           <PaginationItem key="ellipsis-end">
-            <PaginationLink disabled>...</PaginationLink>
+            <PaginationEllipsis />
           </PaginationItem>
         );
       }
