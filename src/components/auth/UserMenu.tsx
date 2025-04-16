@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useAuth } from '@/contexts/AuthContext';
-import { User, BookOpen, Bookmark, LogOut } from 'lucide-react';
+import { User, BookOpen, Bookmark, LogOut, AlertCircle } from 'lucide-react';
 import AuthModal from './AuthModal';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const UserMenu = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isConfigured } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { toast } = useToast();
   
   const handleSignOut = async () => {
     await signOut();
@@ -20,6 +22,19 @@ const UserMenu = () => {
   const getUserInitials = () => {
     if (!user?.email) return 'U';
     return user.email.charAt(0).toUpperCase();
+  };
+
+  // Show configuration warning
+  const showConfigWarning = () => {
+    if (!isConfigured) {
+      toast({
+        title: "Configuration Required",
+        description: "Supabase is not properly configured. Please set the required environment variables.",
+        variant: "destructive",
+      });
+    } else {
+      setIsAuthModalOpen(true);
+    }
   };
 
   return (
@@ -67,9 +82,16 @@ const UserMenu = () => {
         </DropdownMenu>
       ) : (
         <>
-          <Button variant="outline" onClick={() => setIsAuthModalOpen(true)}>
-            Sign In
-          </Button>
+          {!isConfigured ? (
+            <Button variant="outline" onClick={showConfigWarning} className="text-amber-600">
+              <AlertCircle className="h-4 w-4 mr-2" />
+              Setup Required
+            </Button>
+          ) : (
+            <Button variant="outline" onClick={() => setIsAuthModalOpen(true)}>
+              Sign In
+            </Button>
+          )}
           <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
         </>
       )}
