@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import BookGrid from "@/components/books/BookGrid";
@@ -18,20 +17,20 @@ const Home = () => {
         <section className="bg-library-navy text-white py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4">
                 Divine Reading Oasis
               </h1>
-              <p className="text-lg md:text-xl mb-4 text-gray-300">
+              <p className="text-xl md:text-2xl mb-8 font-light">
                 An initiative by OMPH Church
               </p>
-              <p className="text-lg md:text-xl mb-8 text-gray-300">
+              <p className="text-lg md:text-xl mb-8">
                 Welcome to Divine Reading Oasis, your source for free access to Christian religious books and spiritual wisdom.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button asChild className="bg-library-gold hover:bg-library-gold/90 text-library-navy font-medium">
                   <Link to="/catalog">Browse the Library</Link>
                 </Button>
-                <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button asChild className="border-white text-white hover:bg-white/10">
                   <Link to="/about">Learn More</Link>
                 </Button>
               </div>
@@ -92,7 +91,7 @@ const Home = () => {
                 Our mission is to provide free access to Christian literature that can enlighten, 
                 inspire, and strengthen your faith journey.
               </p>
-              <Button asChild variant="outline" className="border-library-burgundy text-library-burgundy hover:bg-library-burgundy/10">
+              <Button asChild className="border-library-burgundy text-library-burgundy hover:bg-library-burgundy/10">
                 <Link to="/about">Read Our Story</Link>
               </Button>
             </div>

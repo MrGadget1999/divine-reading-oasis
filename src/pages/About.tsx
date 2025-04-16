@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -12,6 +11,9 @@ const About = () => {
         <section className="bg-library-navy text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">About Divine Reading Oasis</h1>
+            <p className="text-xl md:text-2xl mb-4 text-gray-300">
+              An initiative by OMPH Church
+            </p>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Providing free access to Christian literature for spiritual growth and enlightenment
             </p>
