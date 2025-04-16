@@ -19,8 +19,11 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6">
-                Discover Christian Wisdom
+                Divine Reading Oasis
               </h1>
+              <p className="text-lg md:text-xl mb-4 text-gray-300">
+                An initiative by OMPH Church
+              </p>
               <p className="text-lg md:text-xl mb-8 text-gray-300">
                 Welcome to Divine Reading Oasis, your source for free access to Christian religious books and spiritual wisdom.
               </p>
