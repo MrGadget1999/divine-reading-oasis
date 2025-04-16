@@ -61,8 +61,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                library: {
+                    navy: '#1A365D',
+                    gold: '#E2C275',
+                    burgundy: '#722F37',
+                    cream: '#F9F7F1',
+                    dark: '#333333'
+                }
 			},
+            fontFamily: {
+                'serif': ['Playfair Display', 'serif'],
+                'sans': ['Inter', 'sans-serif'],
+            },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -92,5 +103,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
