@@ -10,3 +10,23 @@ export interface Book {
   content: string;
   pageCount: number;
 }
+
+export interface UserReadingProgress {
+  id: string;
+  userId: string;
+  bookId: string;
+  currentPage: number;
+  lastReadAt: string;
+  completionPercentage: number;
+  isCompleted: boolean;
+}
+
+export interface UserBookCollection {
+  id: string;
+  userId: string;
+  name: string;
+  description?: string;
+  bookIds: string[];
+  createdAt: string;
+  updatedAt: string;
+}

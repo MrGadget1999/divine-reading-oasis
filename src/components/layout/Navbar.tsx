@@ -4,6 +4,7 @@ import { Search, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import UserMenu from "@/components/auth/UserMenu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ const Navbar = () => {
           </nav>
 
           {/* Search Bar (Desktop) */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-4">
             <div className="relative">
               <Input
                 type="text"
@@ -52,6 +53,9 @@ const Navbar = () => {
                 <Search className="h-4 w-4" />
               </Button>
             </div>
+            
+            {/* User Menu */}
+            <UserMenu />
           </div>
 
           {/* Mobile Menu Button */}
@@ -109,6 +113,11 @@ const Navbar = () => {
                 >
                   <Search className="h-4 w-4" />
                 </Button>
+              </div>
+              
+              {/* User Menu (Mobile) */}
+              <div className="py-2">
+                <UserMenu />
               </div>
             </div>
           </div>

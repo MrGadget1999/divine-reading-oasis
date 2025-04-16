@@ -6,23 +6,63 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, Menu, Bookmark, Type, Sun, Moon } from "lucide-react";
+import { ArrowLeft, ArrowRight, Menu, Bookmark, Type, Sun, Moon, Save } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
+import { getReadingProgress, saveReadingProgress } from "@/services/readingProgressService";
+import { addBookToCollection, getUserCollections } from "@/services/collectionService";
+import { UserBookCollection } from "@/types/book";
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuLabel, 
+  DropdownMenuSeparator, 
+  DropdownMenuTrigger 
+} from "@/components/ui/dropdown-menu";
+import AuthModal from "@/components/auth/AuthModal";
 
 const BookReader = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { toast } = useToast();
   
   const [fontSize, setFontSize] = useState(18);
   const [darkMode, setDarkMode] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [collections, setCollections] = useState<UserBookCollection[]>([]);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   
   const book = id ? getBookById(id) : undefined;
   
+  // Fetch reading progress when component mounts
   useEffect(() => {
     if (!book) {
       navigate("/catalog", { replace: true });
+      return;
     }
-  }, [book, navigate]);
+    
+    const fetchReadingProgress = async () => {
+      if (user && id) {
+        const progress = await getReadingProgress(user.id, id);
+        if (progress) {
+          setCurrentPage(progress.currentPage);
+        }
+      }
+    };
+    
+    const fetchCollections = async () => {
+      if (user) {
+        const userCollections = await getUserCollections(user.id);
+        setCollections(userCollections);
+      }
+    };
+    
+    fetchReadingProgress();
+    fetchCollections();
+  }, [book, id, user, navigate]);
   
   if (!book) {
     return null; // Navigate will handle redirect
@@ -42,6 +82,48 @@ const BookReader = () => {
   
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+  };
+  
+  const handleSaveProgress = async () => {
+    if (!user) {
+      setIsAuthModalOpen(true);
+      return;
+    }
+    
+    if (id) {
+      const progress = await saveReadingProgress(user.id, id, currentPage, book.pageCount);
+      if (progress) {
+        toast({
+          title: "Progress Saved",
+          description: `You're on page ${currentPage} of ${book.pageCount} (${progress.completionPercentage}%)`,
+        });
+      }
+    }
+  };
+  
+  const addToCollection = async (collectionId: string) => {
+    if (!user || !id) return;
+    
+    const success = await addBookToCollection(collectionId, id);
+    if (success) {
+      toast({
+        title: "Book Added",
+        description: "Book has been added to your collection.",
+      });
+    }
+  };
+  
+  // Simulate page turning (in a real app, this would be more sophisticated)
+  const nextPage = () => {
+    if (currentPage < book.pageCount) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+  
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
   };
   
   return (
@@ -71,6 +153,11 @@ const BookReader = () => {
               </Badge>
             ))}
           </div>
+        </div>
+        
+        {/* Reading Progress */}
+        <div className={`${darkMode ? "text-gray-400" : "text-gray-600"} mb-4 text-sm`}>
+          Page {currentPage} of {book.pageCount} ({Math.round((currentPage / book.pageCount) * 100)}% complete)
         </div>
         
         {/* Reading Controls */}
@@ -120,12 +207,47 @@ const BookReader = () => {
                   {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 </Button>
                 
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button 
+                      variant="ghost" 
+                      size="icon"
+                      className={darkMode ? "text-gray-300 hover:text-white hover:bg-gray-800" : ""}
+                    >
+                      <Bookmark className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Add to Collection</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {user ? (
+                      collections.length > 0 ? (
+                        collections.map((collection) => (
+                          <DropdownMenuItem 
+                            key={collection.id} 
+                            onClick={() => addToCollection(collection.id)}
+                          >
+                            {collection.name}
+                          </DropdownMenuItem>
+                        ))
+                      ) : (
+                        <DropdownMenuItem disabled>No collections</DropdownMenuItem>
+                      )
+                    ) : (
+                      <DropdownMenuItem onClick={() => setIsAuthModalOpen(true)}>
+                        Sign in to create collections
+                      </DropdownMenuItem>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                
                 <Button 
                   variant="ghost" 
                   size="icon"
+                  onClick={handleSaveProgress}
                   className={darkMode ? "text-gray-300 hover:text-white hover:bg-gray-800" : ""}
                 >
-                  <Bookmark className="h-5 w-5" />
+                  <Save className="h-5 w-5" />
                 </Button>
               </div>
             )}
@@ -160,17 +282,19 @@ const BookReader = () => {
             <Button
               variant="outline"
               className={`flex items-center ${darkMode ? "border-gray-700 text-gray-300 hover:bg-gray-800" : ""}`}
-              disabled
+              onClick={prevPage}
+              disabled={currentPage <= 1}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Previous Chapter
+              Previous Page
             </Button>
             <Button
               variant="outline"
               className={`flex items-center ${darkMode ? "border-gray-700 text-gray-300 hover:bg-gray-800" : ""}`}
-              disabled
+              onClick={nextPage}
+              disabled={currentPage >= book.pageCount}
             >
-              Next Chapter
+              Next Page
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </div>
@@ -178,6 +302,9 @@ const BookReader = () => {
       </main>
       
       <Footer />
+      
+      {/* Auth Modal */}
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </div>
   );
 };
