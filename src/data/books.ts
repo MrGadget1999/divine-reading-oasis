@@ -1,4 +1,3 @@
-
 import { Book } from "@/types/book";
 
 export const books: Book[] = [
@@ -91,6 +90,96 @@ export const books: Book[] = [
     Cheap grace is the preaching of forgiveness without requiring repentance, baptism without church discipline, Communion without confession, absolution without personal confession. Cheap grace is grace without discipleship, grace without the cross, grace without Jesus Christ, living and incarnate.
     `,
     pageCount: 320
+  },
+  {
+    id: "7",
+    title: "Knowing God",
+    author: "J.I. Packer",
+    description: "J.I. Packer's classic work explores the nature of God and how a deeper understanding of who He is transforms our relationship with Him.",
+    coverImage: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    publishedYear: 1973,
+    categories: ["Theology", "Spiritual Growth", "Classic"],
+    content: `
+    What were we made for? To know God. What aim should we set ourselves in life? To know God. What is the "eternal life" that Jesus gives? Knowledge of God. "This is life eternal, that they might know thee, the only true God, and Jesus Christ, whom thou hast sent" (John 17:3). What is the best thing in life, bringing more joy, delight, and contentment, than anything else? Knowledge of God. "Thus saith the Lord, Let not the wise man glory in his wisdom, neither let the mighty man glory in his might, let not the rich man glory in his riches; but let him that glorieth glory in this, that he understandeth and knoweth me" (Jer. 9:23 f.). What, of all the states God ever sees man in, gives Him most pleasure? Knowledge of Himself. "I desire... the knowledge of God more than burnt offerings," says God (Hos. 6:6).
+    `,
+    pageCount: 286
+  },
+  {
+    id: "8",
+    title: "The Screwtape Letters",
+    author: "C.S. Lewis",
+    description: "A masterpiece of satire, this classic has entertained and enlightened readers the world over with its sly and ironic portrayal of human life from the vantage point of Screwtape, a senior tempter in the service of 'Our Father Below.'",
+    coverImage: "https://images.unsplash.com/photo-1515098506762-79e1384e9d8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    publishedYear: 1942,
+    categories: ["Fiction", "Spiritual Warfare", "Classic"],
+    content: `
+    My dear Wormwood,
+    
+    I note what you say about guiding your patient's reading and taking care that he sees a good deal of his materialist friend. But are you not being a trifle naïf? It sounds as if you supposed that argument was the way to keep him out of the Enemy's clutches. That might have been so if he had lived a few centuries earlier. At that time the humans still knew pretty well when a thing was proved and when it was not; and if it was proved they really believed it. They still connected thinking with doing and were prepared to alter their way of life as the result of a chain of reasoning. But what with the weekly press and other such weapons, we have largely altered that.
+    `,
+    pageCount: 209
+  },
+  {
+    id: "9",
+    title: "Desiring God",
+    author: "John Piper",
+    description: "Desiring God reveals that there is no need to choose between duty and delight in the Christian life. Piper argues that faith and pleasure are not at odds.",
+    coverImage: "https://images.unsplash.com/photo-1519682577862-22b62b24e493?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+    publishedYear: 1986,
+    categories: ["Theology", "Spiritual Growth", "Christian Living"],
+    content: `
+    The ultimate ground of Christian Hedonism is the fact that God is uppermost in His own affections: The chief end of God is to glorify God and enjoy Himself forever. The reason this may sound strange is that we are more accustomed to think about our duty than God's design. And when we do ask about God's design, we are too prone to describe it with ourselves at the center of God's affections. We may say, for example, that His design is to redeem the world. Or to save sinners. Or to restore creation. Or the like.
+    
+    But God's saving designs are penultimate, not ultimate. Redemption, salvation, and restoration are not God's ultimate goal. These He performs for the sake of something greater: namely, the enjoyment He has in glorifying Himself. The bedrock foundation of Christian Hedonism is not God's allegiance to us, but to Himself.
+    `,
+    pageCount: 358
+  },
+  {
+    id: "10",
+    title: "The Purpose Driven Life",
+    author: "Rick Warren",
+    description: "This book will help you understand why you are alive and reveal God's amazing plan for you both here and now, and for eternity.",
+    coverImage: "https://images.unsplash.com/photo-1531072901881-d644216d4bf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    publishedYear: 2002,
+    categories: ["Christian Living", "Spiritual Growth", "Self-Help"],
+    content: `
+    It's not about you.
+    
+    The purpose of your life is far greater than your own personal fulfillment, your peace of mind, or even your happiness. It's far greater than your family, your career, or even your wildest dreams and ambitions. If you want to know why you were placed on this planet, you must begin with God. You were born by his purpose and for his purpose.
+    
+    The search for the purpose of life has puzzled people for thousands of years. That's because we typically begin at the wrong starting point—ourselves. We ask self-centered questions like What do I want to be? What should I do with my life? What are my goals, my ambitions, my dreams for my future? But focusing on ourselves will never reveal our life's purpose.
+    `,
+    pageCount: 368
+  },
+  {
+    id: "11",
+    title: "Radical",
+    author: "David Platt",
+    description: "A book that challenges Christians to wake up from the American dream and consider how they can better follow Christ.",
+    coverImage: "https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    publishedYear: 2010,
+    categories: ["Christian Living", "Missions", "Discipleship"],
+    content: `
+    Sometimes I feel like the church in America is a schizophrenic woman. On the one hand, we talk so much about practical steps to take in following Jesus. On the other hand, the consequence of all our talk is that we seem to have watered down Jesus' commands to the point where we can casually embrace them.
+    
+    I wonder if any of us would want a physician who had learned his practice through a correspondence course. What about a pilot, whose only training had been to master the flight simulator. In our more honest moments, we know that following Jesus requires more than casual association with him.
+    `,
+    pageCount: 230
+  },
+  {
+    id: "12",
+    title: "Passion and Purity",
+    author: "Elisabeth Elliot",
+    description: "Using her own life as an example, Elisabeth Elliot guides singles through the often difficult terrain of relationships.",
+    coverImage: "https://images.unsplash.com/photo-1605256585681-455837661b18?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    publishedYear: 1984,
+    categories: ["Relationships", "Christian Living", "Biography"],
+    content: `
+    Of all the struggles of the single life, I believe, the hardest is the struggle to learn patience, trusting God's love, and believing that He is working for your very best—while you wait.
+    
+    When it comes to passion, we can learn either to be its master, or its victim. The struggle with passion is not new. Every human being who has ever lived has had to deal with it in one way or another. What amazes me, however, is how little is said about this struggle in our modern age, when we are supposedly so enlightened.
+    `,
+    pageCount: 192
   }
 ];
 
@@ -107,4 +196,21 @@ export const getBooksByCategory = (category: string): Book[] => {
   return books.filter(book => 
     book.categories.some(cat => cat.toLowerCase() === lowerCategory)
   );
+};
+
+// Pagination utility function
+export const getBooksPage = (page: number, booksPerPage: number, filteredBooks?: Book[]): {
+  books: Book[],
+  totalPages: number
+} => {
+  const booksToPage = filteredBooks || books;
+  const startIndex = (page - 1) * booksPerPage;
+  const endIndex = startIndex + booksPerPage;
+  const pagedBooks = booksToPage.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(booksToPage.length / booksPerPage);
+  
+  return {
+    books: pagedBooks,
+    totalPages
+  };
 };
