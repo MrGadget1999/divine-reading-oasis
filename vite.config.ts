@@ -3,7 +3,7 @@ import pluginReact from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/config//
 export default defineConfig({
   base: '/divine-reading-oasis/',  // This is crucial
   build: {
