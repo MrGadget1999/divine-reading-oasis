@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divine Reading Oasis</title>
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
+      console.log("404.html script running"); // Add this line
       var segmentCount = 1; // Changed from pathSegmentsToKeep for clarity
       var l = window.location;
       // Add error handling for the redirect//
@@ -20,13 +18,14 @@
           l.hash
         );
       } catch (e) {
+        console.error('Redirect failed:', e); // Add this line
         window.location.href = '/divine-reading-oasis/'; // Fallback to home page if redirect fails
       }
     </script>
   </head>
   <body>
     <noscript>
-      Redirecting to home page... If not redirected, <a href="/divine-reading-oasis/">click here</a>
+      Redirecting... If not redirected, <a href="/divine-reading-oasis/">click here</a>
     </noscript>
   </body>
 </html>
