@@ -15,11 +15,11 @@ const Navbar = () => {
     <nav className="bg-library-navy text-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="flex flex-col"> {/* Changed to flex-col for vertical stacking */}
-            <Link to="/" className="font-serif text-xl font-bold">
+          <div className="flex flex-col -space-y-1"> {/* Tighter spacing between lines */}
+            <Link to="/" className="font-serif text-xl font-bold leading-none">
               Divine Reading Oasis
             </Link>
-            <span className="text-sm text-gray-300">An initiative by OMPH Church</span>
+            <span className="text-xs text-gray-300 leading-tight">An initiative by OMPH Church</span>
           </div>
           
           <div className="flex items-center justify-between">
