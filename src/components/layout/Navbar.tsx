@@ -44,10 +44,8 @@ const Navbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="absolute right-0 top-0"
+                <Button 
+                className="absolute right-0 top-0 p-2"
                 aria-label="Search"
               >
                 <Search className="h-4 w-4" />
@@ -60,8 +58,6 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <Button 
-            variant="ghost" 
-            size="icon" 
             className="md:hidden"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -106,8 +102,7 @@ const Navbar = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button 
-                  variant="ghost" 
-                  size="icon" 
+                  type="button"
                   className="absolute right-0 top-0"
                   aria-label="Search"
                 >
