@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import pluginReact from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
@@ -15,7 +15,7 @@ export default defineConfig({
     port: 8080,
   },
   plugins: [
-    react(),
+    pluginReact(),  // Changed from react() to pluginReact()
     componentTagger(),
   ],
   resolve: {
