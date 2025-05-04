@@ -127,7 +127,10 @@ const BookReader = () => {
   };
   
   return (
-    <div className={`flex flex-col min-h-screen ${darkMode ? "bg-gray-900 text-gray-200" : "bg-library-cream text-gray-800"}`}>
+    <div 
+      className={`flex flex-col min-h-screen ${darkMode ? "bg-gray-900 text-gray-200" : "bg-library-cream text-gray-800"}`}
+      style={{ "--dynamic-font-size": `${fontSize}px` } as React.CSSProperties}
+    >
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-6">
@@ -253,10 +256,8 @@ const BookReader = () => {
             )}
           </div>
         </div>
-        
-        {/* Book Content */}
         <div 
-          className={`prose max-w-prose mx-auto ${darkMode ? "prose-invert" : ""}`}
+          className={`prose max-w-prose mx-auto ${darkMode ? "prose-invert" : ""} dynamic-font-size`}
           style={{ fontSize: `${fontSize}px` }}
         >
           <p className="whitespace-pre-line">{book.content}</p>
